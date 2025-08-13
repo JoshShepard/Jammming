@@ -36,11 +36,15 @@ function App() {
     setPlaylistTracks(prevTracks => prevTracks.filter(savedTrack => savedTrack.id !== track.id));
   };
 
+  const changePlaylistName = newName => {
+    setPlaylistName(newName);
+  }
+
   return (
     <>
       <Header />
       <SearchResults tracks={searchResults} onAdd={addTrackToPlaylist} />
-      <Playlist playlistName={playlistName} playlistTracks={playlistTracks} onRemove={removeTrackFromPlaylist} />
+      <Playlist playlistName={playlistName} playlistTracks={playlistTracks} onRemove={removeTrackFromPlaylist} onNameChange={changePlaylistName} />
     </>
   );
 }
