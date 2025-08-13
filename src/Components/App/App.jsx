@@ -1,6 +1,7 @@
 import Header from "../Header/Header";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
+import styles from "./App.module.css";
 import { useState } from "react";
 
 function App() {
@@ -43,8 +44,10 @@ function App() {
   return (
     <>
       <Header />
-      <SearchResults tracks={searchResults} onAdd={addTrackToPlaylist} />
-      <Playlist playlistName={playlistName} playlistTracks={playlistTracks} onRemove={removeTrackFromPlaylist} onNameChange={changePlaylistName} />
+      <div className={styles.container}>
+          <SearchResults tracks={searchResults} onAdd={addTrackToPlaylist} />
+          <Playlist playlistName={playlistName} playlistTracks={playlistTracks} onRemove={removeTrackFromPlaylist} onNameChange={changePlaylistName} />
+      </div>
     </>
   );
 }
