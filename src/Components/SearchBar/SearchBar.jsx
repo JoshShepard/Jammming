@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import styles from './SearchBar.module.css';
+
 /*
     SearchBar Component
     This component is used to get user input for search queries.
@@ -17,12 +19,10 @@ function SearchBar() {
         setUserSearch('');
     }
     return (
-        <form  onSubmit={handleSubmit}>
-            <input type='search' name='search' placeholder='Search..' onChange={handleSearchChange} value={userSearch}  aria-label='Search for songs'/>
-            <button type='submit'>Search</button>
+        <form  onSubmit={handleSubmit} className={styles.searchBar}>
+            <input type='search' name='search' placeholder='Search..' onChange={handleSearchChange} value={userSearch}  aria-label='Search for songs' className={styles.input}/>
+            <button type='submit' className={styles.button}>Search</button>
         </form>
-
-        
     );
 }
 
