@@ -1,16 +1,18 @@
 import Header from "../Header/Header";
-import Playlist from "../Playlist/Playlist";
 import SearchResults from "../SearchResults/SearchResults";
-import Track from "../Track/Track";
-import TrackList from "../TrackList/TrackList"; 
+import Playlist from "../Playlist/Playlist";
+import { useState } from "react";
 
 function App() {
+  const [searchResults, setSearchResults] = useState([
+    { id: '1', name: 'Lose Yourself', artist: 'Eminem', album: '8 Mile' },
+    { id: '2', name: 'Blinding Lights', artist: 'The Weeknd', album: 'After Hours' },
+    { id: '3', name: 'Levitating', artist: 'Dua Lipa', album: 'Future Nostalgia' },
+  ]);
   return (
     <>
       <Header />
-      <SearchResults />
-      <TrackList />
-      <Track />
+      <SearchResults tracks={searchResults} />
       <Playlist />
     </>
   );
