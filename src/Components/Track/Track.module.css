@@ -4,6 +4,9 @@
     background-color: 	#23262c;
     border-bottom: 1px solid #928c8c;
     transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;;
 }
 
 .container:hover {
@@ -12,6 +15,24 @@
   transform: scale(1.01);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
+.addButton, .removeButton {
+    background-color: #1db954;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+.addButton:hover, .removeButton:hover{
+    background-color: #1ed760;
+}
+
+
 
 .name {
     font-family: Arial, sans-serif;

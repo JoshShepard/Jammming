@@ -1,8 +1,10 @@
 import Header from "../Header/Header";
 import SearchResults from "../SearchResults/SearchResults";
+import Playlist from "../Playlist/Playlist";
 import { useState } from "react";
 
 function App() {
+  // Search results hardcoded for testing purposes
   const [searchResults, setSearchResults] = useState([
     { id: '1', name: 'Lose Yourself', artist: 'Eminem', album: '8 Mile' },
     { id: '2', name: 'Blinding Lights', artist: 'The Weeknd', album: 'After Hours' },
@@ -13,10 +15,32 @@ function App() {
     { id: '7', name: 'Rolling in the Deep', artist: 'Adele', album: '21' },
     { id: '8', name: 'Happy', artist: 'Pharrell Williams', album: 'G I R L' }
   ]);
+
+  // Playlist name and tracks hardcoded for testing purposes
+  const [playlistName, setPlaylistName] = useState('New Playlist');
+  const [playlistTracks, setPlaylistTracks] = useState([]);
+
+  const addTrackToPlaylist = track => {
+    const trackExists = playlistTracks.some(playlistTrack => playlistTrack.id === track.id);
+    // Check if the track is already in the playlist
+    if (trackExists) {
+      console.log(`Track ${track.name} is already in the playlist.`);
+      return; // Do nothing
+    }
+
+    // Add track to playlist
+    setPlaylistTracks(prevTracks => [...prevTracks, track]);
+  }
+
+  const removeTrackFromPlaylist = track => {
+    setPlaylistTracks(prevTracks => prevTracks.filter(savedTrack => savedTrack.id !== track.id));
+  };
+
   return (
     <>
       <Header />
-      <SearchResults tracks={searchResults} />
+      <SearchResults tracks={searchResults} onAdd={addTrackToPlaylist} />
+      <Playlist playlistName={playlistName} playlistTracks={playlistTracks} onRemove={removeTrackFromPlaylist} />
     </>
   );
 }

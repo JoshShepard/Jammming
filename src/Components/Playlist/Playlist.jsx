@@ -1,6 +1,12 @@
-function Playlist() {
+import TrackList from "../TrackList/TrackList";
+import styles from "./Playlist.module.css"; 
+
+function Playlist({ playlistName, playlistTracks, onRemove }) {
     return (
-        <h2>Playlist</h2>
+        <div className={styles.container}>
+            <h2 className={styles.playlistName}>{playlistName}</h2>
+            <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval={true}/>
+        </div>
     );
 }
 
